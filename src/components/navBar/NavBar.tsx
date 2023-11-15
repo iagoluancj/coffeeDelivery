@@ -1,10 +1,11 @@
-import { NavContainer, NavItens_Andress, NavItens_Cart, NavSeparator} from "./styles";
+import { NavContainer, NavItens_Andress, NavItens_Cart, NavSeparator, TotalQuantityDiv} from "./styles";
 import logoCoffeDelivery from '../../assets/logoCoffeeDelivery.svg'
 import locationNav from '../../assets/locationNav.svg'
 import cartNav from '../../assets/cartNav.svg'
 import home from '../../assets/home.svg'
 
 import { useEffect, useState } from "react";
+import { useCoffees } from "../../Hooks/use-Coffees";
 
 interface NominatimResult {
     address: {
@@ -15,6 +16,10 @@ interface NominatimResult {
 export function NavBar() {
     const [atualLocation, setAtualLocation] = useState('Carregando...');
 
+    const { coffees } = useCoffees();
+    const totalQuantity = coffees.reduce((total, coffee) => total + coffee.quantity, 0);
+
+    
     // o código abaixo deve ser inserido no contexto quando o mesmo for criado.
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(
@@ -30,7 +35,7 @@ export function NavBar() {
             const data = await response.json();
             setAtualLocation(extractCityFromNominatimResult(data));
         } catch (error) {
-            console.error('Error fetching location data:', error.message);
+            console.error('Error fetching location data:', error);
         }
     };
 
@@ -49,7 +54,10 @@ export function NavBar() {
                     </div>
                 </NavItens_Andress>
                 <NavItens_Cart><a href="/"><img src={home} alt="" /></a></NavItens_Cart>
-                <NavItens_Cart><a href="/CheckOut"><img src={cartNav} alt="" /></a></NavItens_Cart>
+                <NavItens_Cart><a href="/CheckOut">
+                    <TotalQuantityDiv>{totalQuantity}</TotalQuantityDiv>
+                    <img src={cartNav} alt="" /></a>
+                </NavItens_Cart>
             </NavSeparator>
         </NavContainer>
     )

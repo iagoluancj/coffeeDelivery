@@ -4,6 +4,7 @@ export const NavContainer = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 2;
 
     position: sticky;
     top: 1rem;
@@ -59,7 +60,7 @@ export const NavItens_Cart = styled(NavSeparator)`
     background-color: ${props => props.theme.yellowLight};
     cursor: pointer;
     margin: 0rem .2rem;
-   
+
    img {
         width: 20px;
         transition: .5s;
@@ -76,4 +77,27 @@ export const NavItens_Cart = styled(NavSeparator)`
         text-decoration: none;
         border-radius: 50%;
     }
+`
+
+export const TotalQuantityDiv = styled.div`  
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    
+    margin-right: -2rem;
+    margin-top: -2rem;
+    z-index: 3;
+    
+    padding: .7rem;
+    width: 10px;
+    height: 10px;
+        
+    border-radius: 50%;
+    background: ${props => props.theme.yellowDark};
+    color: ${props => props.theme.white};
+    
+    font-family: Roboto;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
 `
