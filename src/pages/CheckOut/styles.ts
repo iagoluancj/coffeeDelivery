@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const CheckOutContent = styled.div`
     padding: 5rem 2rem; 
     padding-left: 0rem;
-
+   
     h1 {
         color: ${props => props.theme.baseSubtitle};
         font-family: Baloo 2;
@@ -19,12 +19,12 @@ export const CheckOutDiv = styled.div`
     display: flex;
     gap: 1rem;
 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    justify-content: center;
+    margin-left: 3rem;
 
     @media (max-width: 1204px) {
-        display: block;
+        flex-direction: column;
+        align-items: center;
     }
 `
 
@@ -35,10 +35,14 @@ export const CheckOut__Adress = styled.div`
     gap: 12px;
     padding: 3rem;
 
-    max-width: 1200px;
-    
+    max-width: 100%;
+
     border-radius: 6px;
     background: ${props => props.theme.baseCard};
+
+    /* @media (max-width: 800px) {
+        
+    } */
 `
 export const HeaderInfos = styled.div`
     header {
@@ -128,11 +132,35 @@ export const FormsCheckOut = styled.form`
         #cidade {width: 45%;}
         #bairro {width: 45%;}
         #uf {width: 15%;}
+
+    @media (max-width: 800px) {
+        flex-direction: column;
+
+        #cep {width: 230px};
+        #rua {width: 230px};
+        #numero {width: 230px};
+        #complemento {width: 230px};
+        #cidade {width: 230px};
+        #bairro {width: 230px};
+        #uf {width: 230px};
+
+        width: 250px;
+
+        div {
+            display: flex;
+            flex-direction: column;
+        }
+    }
 `
 export const CheckOut__AdressAndPayment = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
+
+    @media (max-width: 800px) {
+        width: 300px;
+    }
 `
 
 export const CheckOut__Payment = styled.div`
@@ -142,13 +170,12 @@ export const CheckOut__Payment = styled.div`
     gap: 12px;
     padding: 3rem;
 
-    max-width: 1200px;
-    
     border-radius: 6px;
     background: ${props => props.theme.baseCard};
 
     @media (max-width: 800px) {
         align-items: center;
+        width: 300px;
     }
 `
 
@@ -186,6 +213,12 @@ export const HeaderPayment = styled.div`
                 font-weight: 400;
                 line-height: 130%; /* 18.2px */
             }
+    @media (max-width: 800px) {
+        h3 {
+            margin-bottom: 1.3rem;
+        }
+    }
+    
 `
 export const CheckOut_CardsMethods = styled.div`
     display: flex;
@@ -194,6 +227,8 @@ export const CheckOut_CardsMethods = styled.div`
 
     @media (max-width: 800px) {
         flex-direction: column;
+        align-items: center;
+        width: 600px;
     }
 `
 export const Checkout_MethodsPayment = styled.div<{ checked: boolean }>`
@@ -236,6 +271,11 @@ export const CheckOut__Finalize = styled.div`
     border-radius: 6px 44px;
     background: var(--base-card, #F3F2F2);
     width: 450px;
+
+    @media (max-width: 500px) { // alterações de responsividade
+        width: 300px;
+        padding: 1rem;
+    }
 `
 export const CheckOut__Products = styled.div`
     display: flex;
@@ -315,57 +355,7 @@ export const Price = styled.div`
 
     width: 55px;
 `
-
-export const Checkout__TotalItens = styled.div`
-    table {
-        thead {
-            th {
-                padding-right: 0px;
-            }
-        }
-    }
-
-    table {
-        tfoot {
-            th {
-                color: var(--base-subtitle, #403937);
-                /* Text/Bold L */
-                font-family: Roboto;
-                font-size: 1.25rem;
-                font-style: normal;
-                font-weight: 700;
-                line-height: 130%; /* 26px */
-                width: initial;
-            }
-
-            td {
-                color: var(--base-subtitle, #403937);
-                /* Text/Bold L */
-                font-family: Roboto;
-                font-size: 1.25rem;
-                font-style: normal;
-                font-weight: 700;
-
-                width: 500px;
-            }
-        }
-    }
-
-    th {
-        font-size: .9rem;
-        color: var(--base-text, #574F4D);
-        /* Text/Regular S */
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 130%; /* 18.2px */
-
-        padding-right: 13rem;
-        text-align: left;
-        padding-bottom: 1rem;
-    }
-
-    td {
+export const SpanValues = styled.div`
         font-size: 1rem;
         color: var(--base-text, #574F4D);
         /* Text/Regular S */
@@ -373,10 +363,51 @@ export const Checkout__TotalItens = styled.div`
         font-style: normal;
         font-weight: 400;
         line-height: 130%; /* 18.2px */
+        padding: .5rem 0rem;
+`
 
-        text-align: right;
-        padding-bottom: 1rem;
+export const SpanTitles = styled.div`
+        font-size: 1rem;
+        color: var(--base-text, #574F4D);
+        /* Text/Regular S */
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%; /* 18.2px */
+        text-align: left;
+        padding: .5rem 0rem;
+`
+
+export const Checkout__Itens = styled.div`
+    display: flex;
+    justify-content: space-between;
+    gap: 5rem;
+    width: 350px;
+    text-align: justify;
+
+    @media (max-width: 500px) {
+        width: 250px;
     }
+
+    span {
+        font-size: 1.4rem;
+        color: var(--base-text, #574F4D);
+        /* Text/Regular S */
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 130%; /* 18.2px */
+        text-align: left;
+        padding: .5rem 0rem;
+    }
+`
+
+
+export const Checkout__TotalItens = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
 
     button {
         display: flex;
@@ -412,5 +443,9 @@ export const Checkout__TotalItens = styled.div`
             font-size: 16px;
             transition: .1s;
         }
+    }
+
+    @media (max-width: 500px) {
+
     }
 `

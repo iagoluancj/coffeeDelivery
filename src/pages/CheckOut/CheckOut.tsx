@@ -17,6 +17,9 @@ import {
     CheckOut__Finalize,
     Checkout__TotalItens,
     FormsCheckOut,
+    SpanValues,
+    SpanTitles,
+    Checkout__Itens,
 } from "./styles";
 
 import locationDelivery from '../../assets/locationDelivery.svg'
@@ -43,7 +46,6 @@ export function CheckOut() {
     const handleCheckboxChange = (method: string) => {
         setCheckedMethod(method);
         setSelectedPaymentMethod(method);
-        console.log('Selecionando método de pagamento:', method);
     };
 
     const handleAddCoffees = (coffeeName: string) => {
@@ -104,13 +106,13 @@ export function CheckOut() {
                                 <input type="text" placeholder="CEP" id="cep" name="cep" />
                                 <input type="text" placeholder="Rua" id="rua" name="rua"/>
                                 <div>
-                                    <input type="text" placeholder="Número" id="numero" name="numero"/>
+                                    <input type="number" placeholder="Número" id="numero" name="numero"/>
                                     <input type="text" placeholder="Complemento" id="complemento" name="complemento"/>
                                 </div>
                                 <div>
                                     <input type="text" placeholder="Bairro" id="bairro" name="bairro"/>
                                     <input type="text" placeholder="Cidade" id="cidade" name="cidade"/>
-                                    <input type="text" placeholder="UF" id="uf" name="uf"/>
+                                    <input type="text" placeholder="UF" id="uf" name="uf" maxLength={2}/>
                                     <input type="hidden" name="paymentMethod" value={selectedPaymentMethod || ''} />
                                 </div>
                             </FormsCheckOut>
@@ -162,26 +164,25 @@ export function CheckOut() {
                             })}
                         </CheckOut__Products>
                         <Checkout__TotalItens>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Total de itens</th>
-                                        <td>{`R$ ${Number(totalValue).toFixed(2)}`}</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th>Entrega</th>
-                                        <td>{`R$ ${Number(frete).toFixed(2)}`}</td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>Total</th>
-                                        <td>{`R$ ${totalCoffeesAndFrete}`}</td>
-                                    </tr>
-                                </tfoot>
-                            </table>
+                            <div>
+                                <Checkout__Itens>
+                                    <SpanTitles>Total de itens</SpanTitles>
+                                    <SpanValues>{`R$ ${Number(totalValue).toFixed(2)}`}</SpanValues>
+                                </Checkout__Itens>
+                            </div>
+                            <div>
+                                <Checkout__Itens>
+                                    <SpanTitles>Entrega</SpanTitles>
+                                    <SpanValues>{`R$ ${Number(frete).toFixed(2)}`}</SpanValues>
+                                </Checkout__Itens>
+                            </div>
+                            <div>
+                                <Checkout__Itens>
+                                    <span>Total</span>
+                                    <span>{`R$ ${totalCoffeesAndFrete}`}</span>
+                                </Checkout__Itens>
+                            </div>
+                            
                             <button type="submit" onClick={handleSubmit}>Confirmar pedido</button>
                         </Checkout__TotalItens>
                     </CheckOut__Finalize>

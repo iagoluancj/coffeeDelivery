@@ -22,6 +22,7 @@ export const MainDelivery = styled.div`
         gap: 2rem;
     }
 `
+
 export const HeaderDelivery = styled.header`
     display: flex;
     flex-direction: column;
@@ -49,7 +50,6 @@ export const HeaderDelivery = styled.header`
         line-height: 130%; /* 26px */
     }
 `
-
 export const DivNegrito = styled.div`
     color: ${props => props.theme.baseText};
     font-family: Roboto;
@@ -57,7 +57,16 @@ export const DivNegrito = styled.div`
     font-style: normal;
     font-weight: 700;
     line-height: 130%;
+
+    text-transform: capitalize;
 `
+
+export const DivNegritoPayment = styled(DivNegrito)`
+    text-transform: none;
+
+`
+
+
 export const SpanNegrito = styled.span`
     color: ${props => props.theme.baseText};
     font-family: Roboto;
@@ -89,6 +98,11 @@ export const DeliveryTimeAndOthers = styled.div`
 
    align-items: center;
 `
+
+export const SpanUF = styled.span`
+    text-transform: uppercase;
+`
+
 
 export const ImgBG = styled.div<StatusProps>`
     background-color: ${props => props.theme[STATUS_COLORS[props.statusColor]]};
