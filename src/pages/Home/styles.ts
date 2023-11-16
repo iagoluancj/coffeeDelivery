@@ -21,7 +21,7 @@ export const HeaderContnet = styled.header`
         margin-bottom: 1rem;
 
         font-family: Baloo 2;
-        font-size: 48px;
+        font-size: 3rem;
         font-weight: 800;
         line-height: 130%;
         font-style: normal;
@@ -65,10 +65,43 @@ export const HeaderContnet = styled.header`
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        margin-bottom: 5rem;
+
+       div {
+            ul {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+       }
+    }
+
+    @media (max-width: 500px) {
+        h1 {
+            font-family: Baloo 2;
+            font-size: 1.7rem;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
     }
 `
 export const ThumbImg = styled.div`
     margin-right: -5rem;
+
+        @media (max-width: 1000px) {
+            position: absolute;
+            margin-left: 20rem;
+            margin-top: 18rem;
+        }
+
+    @media (max-width: 735px) {
+        position: initial;
+        margin: 0;
+    }
 `
 export const Status = styled.div<StatusProps>`
     background-color: ${props => props.theme[STATUS_COLORS[props.statuscolor]]};
@@ -84,17 +117,22 @@ export const Status = styled.div<StatusProps>`
     img {
         width: 16px;
     }
+
+    @media (max-width: 500px) {
+        padding: .2rem;
+    }
 `
 export const CoffeesDiv = styled.div`
     color: ${props => props.theme.baseSubtitle};
     h2 {
         font-family: Baloo 2;
-        font-size: 32px;
+        font-size: 2rem;
         font-style: normal;
         font-weight: 800;
         line-height: 130%; /* 41.6px */
         padding-bottom: 2rem;
     }
+
 `
 
 export const Coffee = styled.div`

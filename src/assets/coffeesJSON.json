@@ -3,84 +3,98 @@
     "type": ["Tradicional"],
     "name": "Expresso Tradicional",
     "describe": "O tradicional café feito com água quente e grãos moídos",
-    "img": "https://p7.hiclipart.com/preview/291/265/270/coffee-cup-hot-milk-tea.jpg"
+    "img": "https://p7.hiclipart.com/preview/291/265/270/coffee-cup-hot-milk-tea.jpg",
+    "price": "7,90"
   },
   {
     "type": ["Tradicional"],
     "name": "Expresso Americano",
     "describe": "Expresso diluído, menos intenso que o tradicional",
-    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png"
+    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png",
+    "price": "4,90"
   },
   {
     "type": ["Tradicional"],
     "name": "Expresso Cremoso",
     "describe": "Café expresso tradicional com espuma cremosa",
-    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png"
+    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png",
+    "price": "1,90"
   },
   {
     "type": ["Tradicional", "gelado"],
     "name": "Expresso Gelado",
     "describe": "Bebida preparada com café expresso e cubos de gelo",
-    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png"
+    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png",
+    "price": "5,60"
   },
   {
     "type": ["Tradicional", "com leite"],
     "name": "Café com Leite",
     "describe": "Meio a meio de expresso tradicional com leite vaporizado",
-    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png"
+    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png",
+    "price": "3,50"
   },
   {
     "type": ["Tradicional", "leite"],
     "name": "Latte",
     "describe": "Uma dose de café expresso com o dobro de leite e espuma cremosa",
-    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png"
+    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png",
+    "price": "2,90"
   },
   {
     "type": ["Tradicional", "com leite"],
     "name": "Capuccino",
     "describe": "Bebida com canela feita de doses iguais de café, leite e espuma",
-    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png"
+    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png",
+    "price": "8,10"
   },
   {
     "type": ["Tradicional", "com leite"],
     "name": "Macchiato",
     "describe": "Café expresso misturado com um pouco de leite quente e espuma",
-    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png"
+    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png",
+    "price": "5,90"
   },
   {
     "type": ["Tradicional", "com leite"],
     "name": "Mocaccino",
     "describe": "Café expresso com calda de chocolate, pouco leite e espuma",
-    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png"
+    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png",
+    "price": "1,30"
   },
   {
     "type": ["especial", "com leite"],
     "name": "Chocolate Quente",
     "describe": "Bebida feita com chocolate dissolvido no leite quente e café",
-    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png"
+    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png",
+    "price": "6,20"
   },
   {
     "type": ["especial", "alcoólico", "gelado"],
     "name": "Cubano",
     "describe": "Drink gelado de café expresso com rum, creme de leite e hortelã",
-    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png"
+    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png",
+    "price": "7,30"
   },
   {
     "type": ["especial"],
     "name": "Havaiano",
     "describe": "Bebida adocicada preparada com café e leite de coco",
-    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png"
+    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png",
+    "price": "1,90"
   },
   {
     "type": ["especial"],
     "name": "Árabe",
     "describe": "Bebida preparada com grãos de café árabe e especiarias",
-    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png"
+    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png",
+    "price": "5,80"
   },
   {
     "type": ["especial", "alcoólico"],
     "name": "Irlandês",
     "describe": "Bebida a base de café, uísque irlandês, açúcar e chantilly",
-    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png"
+    "img": "https://pngimg.com/uploads/mug_coffee/mug_coffee_PNG16843.png",
+    "price": "3,90"
   }
 ]

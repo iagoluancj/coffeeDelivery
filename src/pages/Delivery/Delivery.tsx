@@ -1,3 +1,4 @@
+// import { useEffect } from 'react'
 import Illustration from '../../assets/Illustration.svg'
 import cash from '../../assets/cash.svg'
 import timer from '../../assets/deliveryWhite.svg'
@@ -6,7 +7,22 @@ import whiteLocation from '../../assets/whiteLocation.svg'
 import { DeliveryTimeAndOthers, DivNegrito, HeaderDelivery, ImgBG, InfosDelivery, MainDelivery, SpanNegrito } from './styles'
 
 export function Delivery() {
-    return (
+    // useEffect(() => {
+    //     // Recuperar os dados do localStorage
+    //     const formData = JSON.parse(localStorage.getItem('formData') || '{}');
+        
+    //     // Use formData conforme necessário
+    //     console.log(formData)
+
+    //     // Limpar os dados do localStorage após utilização (opcional)
+    //     localStorage.removeItem('formData');
+    //   }, []);
+      
+      const formData = JSON.parse(localStorage.getItem('formData') || '{}');
+      console.log(formData)
+
+
+      return (
         <div>
             <HeaderDelivery>
                 <h1>Uhu! Pedido confirmado</h1>

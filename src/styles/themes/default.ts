@@ -16,5 +16,7 @@ export const defaultTheme = {
     baseInput: '#EDEDED',
     baseCard: '#F3F2F2',
     background: '#FAFAFA',
-    white: '#FFFFFF'
+    white: '#FFFFFF',
+
+    danger: '#d9534f'
 }

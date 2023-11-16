@@ -5,14 +5,15 @@ import { AddOrRemoveButon } from '../../../components/AddOrRemoveButton/AddOrRem
 import cartWhite from '../../../assets/cartWhite.svg'
 import { useCoffees } from '../../../Hooks/use-Coffees';
 
-type Coffee = {
+export type Coffee = {
     type: string | string[];
     name: string;
     describe: string;
     img: string;
+    price: number;
 };
 
-type CoffeesCompoProps = {
+export type CoffeesCompoProps = {
     coffee: Coffee;
     quantity: number;
     onAddCoffees?: () => void;
@@ -39,9 +40,9 @@ const CoffeesCompo: React.FC<CoffeesCompoProps> = ({ coffee, quantity, onAddCoff
             <PriceAndQuantity>
                 <div>
                     <span>R$</span>
-                    <PriceSpan>9,90</PriceSpan>
+                    <PriceSpan>{coffee.price}</PriceSpan>
                 </div>
-                <AddOrRemoveButon onAddCoffees={onAddCoffees}  onRemoveCoffees={onRemoveCoffees}  quantity={quantity}/>
+                <AddOrRemoveButon onAddCoffees={onAddCoffees} onRemoveCoffees={onRemoveCoffees} quantity={quantity} />
                 <CartAddOrRemove>
                     <img src={cartWhite} alt="" />
                 </CartAddOrRemove>
@@ -60,8 +61,6 @@ export function RenderCoffees() {
     const handleRemoveCoffees = (coffeeName: string) => {
         removeCoffees(coffeeName);
     };
-
-    console.log(coffees)
 
     return (
         <RenderCoffee>

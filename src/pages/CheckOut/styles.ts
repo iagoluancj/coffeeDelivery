@@ -84,7 +84,7 @@ export const HeaderInfos = styled.div`
 
 `
 
-export const Forms = styled.form`
+export const FormsCheckOut = styled.form`
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
@@ -235,7 +235,7 @@ export const CheckOut__Finalize = styled.div`
     gap: 24px;
     border-radius: 6px 44px;
     background: var(--base-card, #F3F2F2);
-
+    width: 450px;
 `
 export const CheckOut__Products = styled.div`
     display: flex;
@@ -254,10 +254,10 @@ export const CheckOut__ProductCoffee = styled.div`
     h4 {
         color: ${props => props.theme.baseSubtitle};
         /* Text/Regular M */
-        font-family: Roboto;
+        font-family: "Roboto";
         font-size: 16px;
         font-style: normal;
-        font-weight: 400;
+        font-weight: 600;
         line-height: 130%; /* 20.8px */
     }
 
@@ -273,6 +273,14 @@ export const CheckOutButtonDiv = styled.div`
     gap: 1rem;
     margin: .5rem 0rem;
     transition: .2s;
+
+    div {
+        :hover {
+            transition: .2s;
+            background-color: ${props => props.theme.danger};
+            color: ${props => props.theme.white} ;
+        }
+    }
 `
 export const Remove = styled.div`
     display: flex;
@@ -288,15 +296,11 @@ export const Remove = styled.div`
 
     transition: .2s;
 
-    :hover {
-        transform: scale(1.3);
-        transition: .2s;
-    }
-
     img {
         transition: .5s;
         max-width: 20px;
         max-height: 20px;
+        transition: .2s;
     }
 `
 export const Price = styled.div`
@@ -313,24 +317,37 @@ export const Price = styled.div`
 `
 
 export const Checkout__TotalItens = styled.div`
-    tfoot {
-        th {
-            color: var(--base-subtitle, #403937);
-            /* Text/Bold L */
-            font-family: Roboto;
-            font-size: 1.25rem;
-            font-style: normal;
-            font-weight: 700;
-            line-height: 130%; /* 26px */
+    table {
+        thead {
+            th {
+                padding-right: 0px;
+            }
         }
+    }
 
-        td {
-            color: var(--base-subtitle, #403937);
-            /* Text/Bold L */
-            font-family: Roboto;
-            font-size: 1.25rem;
-            font-style: normal;
-            font-weight: 700;
+    table {
+        tfoot {
+            th {
+                color: var(--base-subtitle, #403937);
+                /* Text/Bold L */
+                font-family: Roboto;
+                font-size: 1.25rem;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 130%; /* 26px */
+                width: initial;
+            }
+
+            td {
+                color: var(--base-subtitle, #403937);
+                /* Text/Bold L */
+                font-family: Roboto;
+                font-size: 1.25rem;
+                font-style: normal;
+                font-weight: 700;
+
+                width: 500px;
+            }
         }
     }
 
@@ -376,22 +393,15 @@ export const Checkout__TotalItens = styled.div`
         background: ${props => props.theme.yellow};
         
         transition: .1s;
-
-        span {
-            /* Components/Button G */
-            font-family: Roboto;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: 160%; /* 22.4px */
-            text-transform: uppercase;
-            transition: .1s;
-
-            a {
-                color: ${props => props.theme.white};
-                text-decoration: none;
-            }
-        }
+        
+        color: ${props => props.theme.white};
+        font-family: Roboto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 160%; /* 22.4px */
+        text-transform: uppercase;
+        transition: .1s;
     }
 
     button:hover {

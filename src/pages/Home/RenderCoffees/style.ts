@@ -15,12 +15,16 @@ export const RenderCoffee = styled.div`
         line-height: 130%;
     }
 
-    @media (max-width: 1000px) {
+    @media (max-width: 1001px) {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 1000px) {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 500px) {
+        grid-template-columns: 1fr;
     }
 `
 
@@ -58,6 +62,7 @@ export const MainFeature = styled.div`
         border-radius: 5px;
         padding: .1rem .5rem;
     }
+
 `
 export const PriceAndQuantity = styled.div`
     display: flex;

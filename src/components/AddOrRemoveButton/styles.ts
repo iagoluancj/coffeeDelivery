@@ -30,4 +30,8 @@ export const AddOrRemove = styled.span`
         transform: scale(1.5);
         transition: .2s;
     }
+
+    span {
+        width: 1rem;
+    }
 `

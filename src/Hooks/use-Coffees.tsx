@@ -2,8 +2,7 @@ import { createContext, useState, useContext } from "react";
 
 type Coffee = {
     id: string;
-    quantity: number; 
-
+    quantity: number;
 }
 
 type CoffeeWithQuantity = Coffee & { quantity: number };
@@ -25,7 +24,9 @@ export const CoffeesContext = createContext<CoffeesContextType>({
 });
 
 export const CoffeesProvider = ({ children }: CoffeeProviderProps) => {
-    const [coffees, setCoffees] = useState<CoffeeWithQuantity[]>([])
+    const initialCoffees = JSON.parse(localStorage.getItem('coffees') || '[]');
+
+    const [coffees, setCoffees] = useState<CoffeeWithQuantity[]>(initialCoffees)
 
     const addCoffees = (coffee: Coffee) => {
         const existingCoffee = coffees.find((c) => c.id === coffee.id);
@@ -35,19 +36,27 @@ export const CoffeesProvider = ({ children }: CoffeeProviderProps) => {
                 c.id === coffee.id ? { ...c, quantity: c.quantity + 1 } : c
             );
             setCoffees(updatedCoffees);
+            localStorage.setItem('coffees', JSON.stringify(updatedCoffees));
         } else {
-            // Se o café ainda não estiver na lista, adiciona com quantidade 1
             setCoffees((prevCoffees) => [...prevCoffees, { ...coffee, quantity: 1 }]);
-        }    };
+        }
+    };
 
-    const removeCoffees = (coffeeId: string) => {
-        const updatedCoffees = coffees.map((coffee) =>
-            coffee.id === coffeeId ? { ...coffee, quantity: coffee.quantity - 1 } : coffee
-        );
-        // Filtra os cafés com quantidade maior que zero
+    const removeCoffees = (coffeeId: string, removeAllInstances: boolean = false) => {
+        let updatedCoffees;
+
+        if (removeAllInstances) {
+            updatedCoffees = coffees.filter((coffee) => coffee.id !== coffeeId);
+        } else {
+            updatedCoffees = coffees.map((coffee) =>
+                coffee.id === coffeeId ? { ...coffee, quantity: coffee.quantity - 1 } : coffee
+            );
+        }
         const filteredCoffees = updatedCoffees.filter((coffee) => coffee.quantity > 0);
         setCoffees(filteredCoffees);
+        localStorage.setItem('coffees', JSON.stringify(filteredCoffees));
     };
+
 
     return (
         <CoffeesContext.Provider value={{ coffees, addCoffees, removeCoffees }}>
