@@ -26,7 +26,7 @@ export const CoffeesContext = createContext<CoffeesContextType>({
 export const CoffeesProvider = ({ children }: CoffeeProviderProps) => {
     const initialCoffees = JSON.parse(localStorage.getItem('coffees') || '[]');
 
-    const [coffees, setCoffees] = useState<CoffeeWithQuantity[]>(initialCoffees)
+    const [coffees, setCoffees] = useState<CoffeeWithQuantity[]>(initialCoffees || []);
 
     const addCoffees = (coffee: Coffee) => {
         const existingCoffee = coffees.find((c) => c.id === coffee.id);
@@ -38,7 +38,9 @@ export const CoffeesProvider = ({ children }: CoffeeProviderProps) => {
             setCoffees(updatedCoffees);
             localStorage.setItem('coffees', JSON.stringify(updatedCoffees));
         } else {
-            setCoffees((prevCoffees) => [...prevCoffees, { ...coffee, quantity: 1 }]);
+            const newCoffees = [...coffees, { ...coffee, quantity: 1 }];
+            setCoffees(newCoffees);
+            localStorage.setItem('coffees', JSON.stringify(newCoffees));
         }
     };
 

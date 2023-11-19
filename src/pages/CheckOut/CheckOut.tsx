@@ -20,6 +20,9 @@ import {
     SpanValues,
     SpanTitles,
     Checkout__Itens,
+    Alert,
+    SpanInfoVerificationOptional,
+    SpanInfoVerificationObrigatorio,
 } from "./styles";
 
 import locationDelivery from '../../assets/locationDelivery.svg'
@@ -38,11 +41,13 @@ import { useCoffees } from "../../Hooks/use-Coffees";
 export function CheckOut() {
     const [checkedMethod, setCheckedMethod] = useState<string | null>(null);
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string | null>(null);
+    const [ msg, setMsg] = useState('')
+    const [ validationCEP, setValidationCEP] = useState('')
 
     const { coffees, addCoffees, removeCoffees } = useCoffees()
     const formRef = useRef<HTMLFormElement | undefined>(undefined);
 
-
+    // Funções de ação
     const handleCheckboxChange = (method: string) => {
         setCheckedMethod(method);
         setSelectedPaymentMethod(method);
@@ -59,8 +64,9 @@ export function CheckOut() {
     const handleRemoveFromCheckout = (coffeeName: string) => {
         removeCoffees(coffeeName, true);
     };
+    // fim funções de ação
 
-
+    // TOTAL ITENS
     const calculateTotalValue = () => {
         const totalCoffeesValue = coffees.reduce((total, coffee) => {
             const coffeeData = coffeesJSON.find((c) => c.name === coffee.id);
@@ -74,19 +80,43 @@ export function CheckOut() {
         return totalCoffeesValue.toFixed(1); // Formatando para duas casas decimais
     };
 
-    const frete = 0;
+    const frete = 2.5;
     const totalValue = calculateTotalValue();
     const totalCoffeesAndFrete = (parseFloat(totalValue) + frete).toFixed(2);
+    // END TOTAL ITENS
+
+    // SUBMIT
+    const handleInputChange = (e) => {
+        setValidationCEP('')
+        const filledField = e.target.value;
+        const fieldName = e.target.name.toUpperCase();
+
+        if (filledField.length < 4 || filledField.length > 14) {
+            setValidationCEP(`${fieldName} inválido(a), preencha os campos corretamente.`)
+        } else {
+            setValidationCEP('')
+        }
+    }
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
         const formData = new FormData(formRef.current);
 
-        localStorage.setItem('formData', JSON.stringify(Object.fromEntries(formData)));
+        const validationForm = () => {
+            const isValid = formRef.current?.checkValidity();
+            return isValid ?? false;
+        }
 
-        window.location.href = '/Delivery';
+        if (validationForm() && (selectedPaymentMethod === 'debit' || selectedPaymentMethod === 'credit' || selectedPaymentMethod === 'cash')) {   
+            localStorage.setItem('formData', JSON.stringify(Object.fromEntries(formData)));
+    
+            window.location.href = '/Delivery';
+            setMsg('')
+        } else {
+            setMsg('Preencha e escolha todos os campos corretamente')
+        }
     };
-
+    /// END SUBMIT
     return (
         <CheckOutContent>
             <CheckOutDiv>
@@ -103,14 +133,15 @@ export function CheckOut() {
                             </header>
 
                             <FormsCheckOut action="" ref={formRef as React.RefObject<HTMLFormElement>} onSubmit={handleSubmit}>
-                                <input type="text" placeholder="CEP" id="cep" name="cep" />
-                                <input type="text" placeholder="Rua" id="rua" name="rua"/>
+                                <Alert>{validationCEP}</Alert>
+                                <SpanInfoVerificationObrigatorio><input type="number" placeholder="CEP" id="cep" name="cep" required onChange={handleInputChange} pattern="\d+"/></SpanInfoVerificationObrigatorio>
+                                <SpanInfoVerificationObrigatorio><input type="text" placeholder="Rua" id="rua" name="rua"/></SpanInfoVerificationObrigatorio>
                                 <div>
-                                    <input type="number" placeholder="Número" id="numero" name="numero"/>
-                                    <input type="text" placeholder="Complemento" id="complemento" name="complemento"/>
+                                    <SpanInfoVerificationObrigatorio><input type="number" placeholder="Número" id="numero" name="numero" required /></SpanInfoVerificationObrigatorio>
+                                    <SpanInfoVerificationOptional><input type="text" placeholder="Complemento" id="complemento" name="complemento"/></SpanInfoVerificationOptional>
                                 </div>
                                 <div>
-                                    <input type="text" placeholder="Bairro" id="bairro" name="bairro"/>
+                                    <SpanInfoVerificationOptional><input type="text" placeholder="Bairro" id="bairro" name="bairro"/></SpanInfoVerificationOptional>
                                     <input type="text" placeholder="Cidade" id="cidade" name="cidade"/>
                                     <input type="text" placeholder="UF" id="uf" name="uf" maxLength={2}/>
                                     <input type="hidden" name="paymentMethod" value={selectedPaymentMethod || ''} />
@@ -119,6 +150,7 @@ export function CheckOut() {
                         </HeaderInfos>
                     </CheckOut__Adress>
                     <CheckOut__Payment>
+                        
                         <HeaderPayment>
                             <img src={paymentIcon} alt="" />
                             <div>
@@ -126,6 +158,7 @@ export function CheckOut() {
                                 <p>O pagamento é feito na entrega. Escolha a forma que deseja pagar</p>
                             </div>
                         </HeaderPayment>
+                        {!checkedMethod && <Alert>{msg}</Alert>}
                         <CheckOut_CardsMethods>
                             <Checkout_MethodsPayment checked={checkedMethod === 'credit'} onClick={() => handleCheckboxChange('credit')}><img src={credito} alt="" /><span>Cartão de crédito</span></Checkout_MethodsPayment>
                             <Checkout_MethodsPayment checked={checkedMethod === 'debit'} onClick={() => handleCheckboxChange('debit')}><img src={debito} alt="" /><span>Cartão de débito</span></Checkout_MethodsPayment>
@@ -184,6 +217,8 @@ export function CheckOut() {
                             </div>
                             
                             <button type="submit" onClick={handleSubmit}>Confirmar pedido</button>
+                            <Alert>{msg}</Alert>
+
                         </Checkout__TotalItens>
                     </CheckOut__Finalize>
                 </AsideCheckout>

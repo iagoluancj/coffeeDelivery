@@ -1,5 +1,9 @@
 import styled from "styled-components"
 
+interface AlertProps {
+    blink?: boolean;
+}
+
 export const CheckOutContent = styled.div`
     padding: 5rem 2rem; 
     padding-left: 0rem;
@@ -39,10 +43,6 @@ export const CheckOut__Adress = styled.div`
 
     border-radius: 6px;
     background: ${props => props.theme.baseCard};
-
-    /* @media (max-width: 800px) {
-        
-    } */
 `
 export const HeaderInfos = styled.div`
     header {
@@ -130,7 +130,7 @@ export const FormsCheckOut = styled.form`
         #complemento {width: 550px;}
 
         #cidade {width: 45%;}
-        #bairro {width: 45%;}
+        #bairro {width: 100%;}
         #uf {width: 15%;}
 
     @media (max-width: 800px) {
@@ -306,7 +306,13 @@ export const CheckOut__ProductCoffee = styled.div`
         height: 64px;
     }
 
-    border-bottom: 1px solid ${props => props.theme.baseButton}; /* Linha */
+    border-bottom: 1px solid ${props => props.theme.baseButton};
+
+    @media (max-width: 500px) {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 `
 export const CheckOutButtonDiv = styled.div`
     display: flex;
@@ -412,6 +418,7 @@ export const Checkout__TotalItens = styled.div`
     button {
         display: flex;
         padding: 12px 8px;
+        margin-bottom: .8rem;
         justify-content: center;
         align-items: center;
         gap: 4px;
@@ -449,3 +456,52 @@ export const Checkout__TotalItens = styled.div`
 
     }
 `
+export const Alert = styled.span<AlertProps>`
+    color: ${props => props.theme.danger};
+    margin-top: -.8rem;
+    transition: 2s;
+`
+export const SpanInfoVerification = styled.span`
+    position: relative;
+    width: 100%;
+    
+    &:before {
+        content: 'Default';
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: ${props => props.theme.baseText};
+        font-size: .7rem; 
+        visibility: hidden;
+        font-style: italic;
+        opacity: 0;
+        transition: opacity 0.3s ease; 
+        padding: 0rem 0rem 0rem .7rem;
+    }
+
+    &:hover:before {
+        visibility: visible;
+        opacity: 1;
+    }
+
+`
+
+export const SpanInfoVerificationOptional = styled(SpanInfoVerification)`
+    &:before {
+        content: 'Opcional';
+
+        color: ${props => props.theme.baseText};
+    }
+`
+
+export const SpanInfoVerificationObrigatorio = styled(SpanInfoVerification)`
+    &:before {
+        content: 'Obrigatório*';
+
+        color: ${props => props.theme.danger};
+    }
+`
+
+
+

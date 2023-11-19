@@ -41,6 +41,7 @@ export function NavBar() {
 
     const extractCityFromNominatimResult = (nominatimResult: NominatimResult) => nominatimResult.address.city || 'Carregando..., DF';
     // até aq. ^^^^
+
     return (
         <NavContainer>
             <NavSeparator>
