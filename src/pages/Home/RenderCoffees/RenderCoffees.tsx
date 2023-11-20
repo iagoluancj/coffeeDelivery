@@ -18,9 +18,10 @@ export type CoffeesCompoProps = {
     quantity: number;
     onAddCoffees?: () => void;
     onRemoveCoffees: () => void;
+    onRemoveAllQuantityCoffe: () => void;
 };
 
-const CoffeesCompo: React.FC<CoffeesCompoProps> = ({ coffee, quantity, onAddCoffees, onRemoveCoffees }) => {
+const CoffeesCompo: React.FC<CoffeesCompoProps> = ({ coffee, quantity, onAddCoffees, onRemoveCoffees, onRemoveAllQuantityCoffe }) => {
     const renderTypes = () => {
         if (Array.isArray(coffee.type)) {
             return coffee.type.map((type, index) => (
@@ -44,7 +45,7 @@ const CoffeesCompo: React.FC<CoffeesCompoProps> = ({ coffee, quantity, onAddCoff
                 </div>
                 <AddOrRemoveButon onAddCoffees={onAddCoffees} onRemoveCoffees={onRemoveCoffees} quantity={quantity} />
                 <CartAddOrRemove>
-                    <img src={cartWhite} alt="" />
+                    <img src={cartWhite} alt="" onClick={() => onRemoveAllQuantityCoffe()}/>
                 </CartAddOrRemove>
             </PriceAndQuantity>
         </CoffeeComponent>
@@ -62,6 +63,11 @@ export function RenderCoffees() {
         removeCoffees(coffeeName);
     };
 
+    const handleRemoveFromRender = (coffeeName: string) => {
+        removeCoffees(coffeeName, true);
+    };
+
+
     return (
         <RenderCoffee>
             {coffeesJSON.map((coffee, index) => {
@@ -74,6 +80,7 @@ export function RenderCoffees() {
                         quantity={coffeeQuantity}
                         onAddCoffees={() => handleAddCoffees(coffee.name)}
                         onRemoveCoffees={() => handleRemoveCoffees(coffee.name)}
+                        onRemoveAllQuantityCoffe={() => handleRemoveFromRender(coffee.name)}
                     />
                 );
             })}
