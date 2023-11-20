@@ -9,9 +9,9 @@ import { CoffeesProvider } from "./Hooks/use-Coffees"
 // Alterar icone de carrinho para op~ção de remover tudo. 
 // Organizar os caffes mapeados com base na quantidade preenchida, para melhor organização ou criar uma lista de escolhidos. 
 
-// Criar valor do frete com base no CEP && buscar dados pelo cep.
+// Criar valor do frete com base no CEP && buscar dados pelo CEP.
 
-// Colocar para a previsão ser ajustada com base no cep. 
+// Colocar para a previsão ser ajustada com base no CEP. 
 */
 
 /* RESOLVIDOS

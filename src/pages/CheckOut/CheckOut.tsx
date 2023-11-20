@@ -38,14 +38,27 @@ import { AddOrRemoveButon } from "../../components/AddOrRemoveButton/AddOrRemove
 import { useRef, useState } from "react";
 import { useCoffees } from "../../Hooks/use-Coffees";
 
+import cep from 'cep-promise'
+
+interface CepAdressCompleted {
+    city: string,
+    neighborhood: string,
+    state: string,
+    street: string
+}
+
 export function CheckOut() {
     const [checkedMethod, setCheckedMethod] = useState<string | null>(null);
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string | null>(null);
     const [ msg, setMsg] = useState('')
     const [ validationCEP, setValidationCEP] = useState('')
+    const [ getAdress, setGetAdress] = useState<CepAdressCompleted>({})
 
     const { coffees, addCoffees, removeCoffees } = useCoffees()
     const formRef = useRef<HTMLFormElement | undefined>(undefined);
+
+    // const onFindAndressByCEP = (e) => 
+    // }
 
     // Funções de ação
     const handleCheckboxChange = (method: string) => {
@@ -86,10 +99,15 @@ export function CheckOut() {
     // END TOTAL ITENS
 
     // SUBMIT
-    const handleInputChange = (e) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValidationCEP('')
         const filledField = e.target.value;
-        const fieldName = e.target.name.toUpperCase();
+        const fieldName = e.target.name.toUpperCase();   
+
+        cep(filledField)
+            .then(function (dataCEPFind) {
+                setGetAdress(dataCEPFind)
+            })   
 
         if (filledField.length < 4 || filledField.length > 14) {
             setValidationCEP(`${fieldName} inválido(a), preencha os campos corretamente.`)
@@ -117,6 +135,17 @@ export function CheckOut() {
         }
     };
     /// END SUBMIT
+
+    const handleDataFromCEP = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const valuePlaceHolder = e.target.placeholder;
+
+        if (getAdress) {
+            return console.log(getAdress)
+        } else {
+            return console.log(getAdress)
+        }
+    }
+
     return (
         <CheckOutContent>
             <CheckOutDiv>
@@ -134,16 +163,16 @@ export function CheckOut() {
 
                             <FormsCheckOut action="" ref={formRef as React.RefObject<HTMLFormElement>} onSubmit={handleSubmit}>
                                 <Alert>{validationCEP}</Alert>
-                                <SpanInfoVerificationObrigatorio><input type="number" placeholder="CEP" id="cep" name="cep" required onChange={handleInputChange} pattern="\d+"/></SpanInfoVerificationObrigatorio>
-                                <SpanInfoVerificationObrigatorio><input type="text" placeholder="Rua" id="rua" name="rua"/></SpanInfoVerificationObrigatorio>
+                                <SpanInfoVerificationObrigatorio><input type="number" placeholder="CEP" id="cep" name="cep" required onChange={handleInputChange}/></SpanInfoVerificationObrigatorio> {/*pattern="\d+"*/}
+                                <SpanInfoVerificationObrigatorio><input type="text" placeholder={getAdress.street ? getAdress.street : 'Rua'} id="rua" name="rua"/></SpanInfoVerificationObrigatorio>
                                 <div>
                                     <SpanInfoVerificationObrigatorio><input type="number" placeholder="Número" id="numero" name="numero" required /></SpanInfoVerificationObrigatorio>
                                     <SpanInfoVerificationOptional><input type="text" placeholder="Complemento" id="complemento" name="complemento"/></SpanInfoVerificationOptional>
                                 </div>
                                 <div>
-                                    <SpanInfoVerificationOptional><input type="text" placeholder="Bairro" id="bairro" name="bairro"/></SpanInfoVerificationOptional>
-                                    <input type="text" placeholder="Cidade" id="cidade" name="cidade"/>
-                                    <input type="text" placeholder="UF" id="uf" name="uf" maxLength={2}/>
+                                    <SpanInfoVerificationOptional><input type="text" placeholder={getAdress.neighborhood ? getAdress.neighborhood : 'Bairro'} id="bairro" name="bairro"/></SpanInfoVerificationOptional>
+                                    <input type="text" placeholder={getAdress.city ? getAdress.city : 'Cidade'} id="cidade" name="cidade"/>
+                                    <input type="text" placeholder={getAdress.state ? getAdress.state : 'UF'} id="uf" name="uf" maxLength={2}/>
                                     <input type="hidden" name="paymentMethod" value={selectedPaymentMethod || ''} />
                                 </div>
                             </FormsCheckOut>
