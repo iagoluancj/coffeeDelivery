@@ -2,7 +2,7 @@ import { ThemeProvider } from "styled-components"
 import { Router } from "./Router"
 import { GlobalStyle } from "./styles/global"
 import { defaultTheme } from "./styles/themes/default"
-import { BrowserRouter } from "react-router-dom"
+import { HashRouter } from "react-router-dom"
 import { CoffeesProvider } from "./Hooks/use-Coffees"
 
 /* EM ANDAMENTO
@@ -41,9 +41,9 @@ function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <CoffeesProvider>
-        <BrowserRouter>
+        <HashRouter>
           <Router />
-        </BrowserRouter>
+        </HashRouter>
       </CoffeesProvider>
       <GlobalStyle />
     </ThemeProvider>
