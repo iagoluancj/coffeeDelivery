@@ -2,15 +2,16 @@ import React from 'react';
 import { CartAddOrRemove, CoffeeComponent, ImgCoffee, MainFeature, PriceAndQuantity, PriceSpan, RenderCoffee } from './style';
 import coffeesJSON from '../../../assets/coffeesJSON.json';
 import { AddOrRemoveButon } from '../../../components/AddOrRemoveButton/AddOrRemoveButton.tsx';
-import cartWhite from '../../../assets/cartWhite.svg'
+import remove from '../../../assets/remove.svg'
 import { useCoffees } from '../../../Hooks/use-Coffees';
+
 
 export type Coffee = {
     type: string | string[];
     name: string;
     describe: string;
     img: string;
-    price: number;
+    price: string;
 };
 
 export type CoffeesCompoProps = {
@@ -45,7 +46,7 @@ const CoffeesCompo: React.FC<CoffeesCompoProps> = ({ coffee, quantity, onAddCoff
                 </div>
                 <AddOrRemoveButon onAddCoffees={onAddCoffees} onRemoveCoffees={onRemoveCoffees} quantity={quantity} />
                 <CartAddOrRemove>
-                    <img src={cartWhite} alt="" onClick={() => onRemoveAllQuantityCoffe()}/>
+                    <img src={remove} alt="" onClick={() => onRemoveAllQuantityCoffe()} />
                 </CartAddOrRemove>
             </PriceAndQuantity>
         </CoffeeComponent>
@@ -67,10 +68,15 @@ export function RenderCoffees() {
         removeCoffees(coffeeName, true);
     };
 
+    const sortedCoffees = [...coffeesJSON].sort((a, b) => {
+        const quantityA = coffees.find((c) => c.id === a.name)?.quantity || 0;
+        const quantityB = coffees.find((c) => c.id === b.name)?.quantity || 0;
+        return quantityB - quantityA;
+    });
 
     return (
         <RenderCoffee>
-            {coffeesJSON.map((coffee, index) => {
+            {sortedCoffees.map((coffee, index) => {
                 const coffeeQuantity = coffees.find((c) => c.id === coffee.name)?.quantity || 0;
 
                 return (
@@ -87,4 +93,3 @@ export function RenderCoffees() {
         </RenderCoffee>
     );
 }
-

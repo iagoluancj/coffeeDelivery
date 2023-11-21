@@ -23,13 +23,13 @@ export const RenderCoffee = styled.div`
         grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
         grid-template-columns: 1fr;
     }
 `
 
 export const ImgCoffee = styled.img`
-    max-width: 120px;
+    width: 100px;
     margin-top: -4rem;
     padding: .5rem 0rem;
 `
@@ -69,7 +69,7 @@ export const PriceAndQuantity = styled.div`
     align-items: center;
     gap: 1rem;
     text-align: justify;
-
+    justify-content: space-around;
     padding: 1rem 0rem;
 `
 export const PriceSpan = styled.span`
@@ -86,7 +86,7 @@ export const CartAddOrRemove = styled.span`
     background: ${props => props.theme.purpleDark};
 
     display: flex;
-    padding: 8px;
+    padding: 0.375rem;
     justify-content: center;
     align-items: center;
     gap: 8px;

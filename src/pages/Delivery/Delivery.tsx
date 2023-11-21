@@ -20,7 +20,7 @@ export function Delivery() {
 
     const { bairro, cidade, numero, paymentMethod, rua, uf } = JSON.parse(localStorage.getItem('formData') || '{}');
 
-    const verifyMethod = (metohd: String) => {
+    const verifyMethod = (metohd: string) => {
         if (metohd === 'credit') {
             return 'Cartão de crédito'
         } else if (metohd === 'debit') {

@@ -3,7 +3,7 @@
     "type": ["Tradicional"],
     "name": "Expresso Tradicional",
     "describe": "O tradicional café feito com água quente e grãos moídos",
-    "img": "/src/assets/catalogCoffees/Type=Americano.svg",
+    "img": "/src/assets/catalogCoffees/Type=tradicional.png",
     "price": "7,90"
   },
   {
