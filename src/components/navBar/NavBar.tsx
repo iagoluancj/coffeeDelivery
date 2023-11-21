@@ -55,7 +55,7 @@ export function NavBar() {
                     </div>
                 </NavItens_Andress>
                 <NavItens_Cart><a href="/"><img src={home} alt="" /></a></NavItens_Cart>
-                <NavItens_Cart><a href="/CheckOut">
+                <NavItens_Cart><a href="/coffeeDelivery/CheckOut">
                     <TotalQuantityDiv>{totalQuantity}</TotalQuantityDiv>
                     <img src={cartNav} alt="" /></a>
                 </NavItens_Cart>
