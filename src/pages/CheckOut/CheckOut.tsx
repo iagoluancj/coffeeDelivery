@@ -37,6 +37,7 @@ import coffeesJSON from '../../assets/coffeesJSON.json'
 import { AddOrRemoveButon } from "../../components/AddOrRemoveButton/AddOrRemoveButton";
 import { useRef, useState } from "react";
 import { useCoffees } from "../../Hooks/use-Coffees";
+import { imagesCoffes } from "../Home/RenderCoffees/imgs"; 
 
 import cep from 'cep-promise'
 
@@ -288,7 +289,7 @@ export function CheckOut() {
 
                                 return (
                                     <CheckOut__ProductCoffee key={index}>
-                                        <img src={coffeeData.img} alt="" />
+                                        <img src={imagesCoffes[coffeeData.name]} alt="" />
                                         <div>
                                             <h4>{coffeeData.name}</h4>
                                             <CheckOutButtonDiv>
