@@ -52,8 +52,8 @@ export function NavBar() {
                         {atualLocation ? atualLocation : 'Carregando..., DF'}
                     </div>
                 </NavItens_Andress>
-                <NavItens_Cart><a href="/"><img src={home} alt="" /></a></NavItens_Cart>
-                <NavItens_Cart><a href="/CheckOut">
+                <NavItens_Cart><a href="/coffeeDelivery/"><img src={home} alt="" /></a></NavItens_Cart>
+                <NavItens_Cart><a href="#/CheckOut">
                     <TotalQuantityDiv>{totalQuantity}</TotalQuantityDiv>
                     <img src={cartNav} alt="" /></a>
                 </NavItens_Cart>

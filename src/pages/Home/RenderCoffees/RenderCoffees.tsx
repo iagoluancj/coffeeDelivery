@@ -5,6 +5,38 @@ import { AddOrRemoveButon } from '../../../components/AddOrRemoveButton/AddOrRem
 import remove from '../../../assets/remove.svg'
 import { useCoffees } from '../../../Hooks/use-Coffees';
 
+import expressoTradicional from '../../../assets/expressoAmericano.svg'
+import expressoAmericano from '../../../assets/expressoAmericano.svg'
+import expressoCremoso from '../../../assets/expressoCremoso.svg'
+import expressoGelado from '../../../assets/expressoGelado.svg'
+import cafeComLeite from '../../../assets/cafeComLeite.svg'
+import latte from '../../../assets/latte.svg'
+import capuccino from '../../../assets/capuccino.svg'
+import macchiato from '../../../assets/macchiato.svg'
+import mocaccino from '../../../assets/mocaccino.svg'
+import chocolateQuente from '../../../assets/chocolateQuente.svg'
+import cubano from '../../../assets/cubano.svg'
+import havaniano from '../../../assets/ExpressoCremoso.svg'
+import arabe from '../../../assets/arabe.svg'
+import irlandes from '../../../assets/irlandes.svg'
+
+
+const imagesCoffes = {
+    expressoTradicional,
+    expressoAmericano,
+    expressoCremoso,
+    expressoGelado,
+    cafeComLeite,
+    latte,
+    capuccino,
+    macchiato,
+    mocaccino,
+    chocolateQuente,
+    cubano,
+    havaniano,
+    arabe,
+    irlandes
+}
 
 export type Coffee = {
     type: string | string[];
@@ -36,6 +68,7 @@ const CoffeesCompo: React.FC<CoffeesCompoProps> = ({ coffee, quantity, onAddCoff
     return (
         <CoffeeComponent key={coffee.name}>
             <ImgCoffee src={coffee.img} alt="" />
+             <ImgCoffee src={imagesCoffes.expressoAmericano} alt="" /> {/*//Criar regra regex aqui para que converta o coffe.name para camelCase e depois disso compare-o aos nomes das variaveis e defina conforme.git*/}
             <MainFeature>{renderTypes()}</MainFeature>
             <h3>{coffee.name}</h3>
             <p>{coffee.describe}</p>
