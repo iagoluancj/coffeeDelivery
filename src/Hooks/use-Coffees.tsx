@@ -14,7 +14,7 @@ type CoffeeProviderProps = {
 type CoffeesContextType = {
     coffees: Coffee[]
     addCoffees: (coffee: Coffee) => void
-    removeCoffees: (coffeeId: string) => void;
+    removeCoffees: (coffeeId: string, removeAllInstances: boolean) => void; 
 }
 
 export const CoffeesContext = createContext<CoffeesContextType>({

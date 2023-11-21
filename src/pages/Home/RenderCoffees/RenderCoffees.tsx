@@ -61,7 +61,7 @@ export function RenderCoffees() {
     };
 
     const handleRemoveCoffees = (coffeeName: string) => {
-        removeCoffees(coffeeName);
+        removeCoffees(coffeeName, false);
     };
 
     const handleRemoveFromRender = (coffeeName: string) => {

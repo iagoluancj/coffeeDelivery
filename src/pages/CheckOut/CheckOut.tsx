@@ -75,7 +75,7 @@ export function CheckOut() {
     };
 
     const handleRemoveCoffees = (coffeeName: string) => {
-        removeCoffees(coffeeName);
+        removeCoffees(coffeeName, false);
     };
 
     const handleRemoveFromCheckout = (coffeeName: string) => {
@@ -137,8 +137,16 @@ export function CheckOut() {
             return isValid ?? false;
         }
 
+        const removeAllItensCart = () => {
+            coffees.forEach(coffee => {
+                removeCoffees(coffee.id, true);
+            });
+        }
+
         if (validationForm() && (selectedPaymentMethod === 'debit' || selectedPaymentMethod === 'credit' || selectedPaymentMethod === 'cash')) {
+
             localStorage.setItem('formData', JSON.stringify(Object.fromEntries(formData)));
+            removeAllItensCart()
 
             window.location.href = '/Delivery';
             setMsg('')
@@ -148,6 +156,7 @@ export function CheckOut() {
     };
     /// END SUBMIT
 
+    //FIND ADRESS FROM CEP
     const handleDataAfterInputCEP = (dataCEPFind: CepAdressCompleted) => {
         const { street, neighborhood, city, state } = dataCEPFind;
 
@@ -168,7 +177,7 @@ export function CheckOut() {
             [name]: value,
         }));
     };
-
+    /// END
     return (
         <CheckOutContent>
             <CheckOutDiv>
