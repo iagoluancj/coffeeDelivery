@@ -19,8 +19,6 @@ export function NavBar() {
     const { coffees } = useCoffees();
     const totalQuantity = coffees.reduce((total, coffee) => total + coffee.quantity, 0);
 
-    
-    // o código abaixo deve ser inserido no contexto quando o mesmo for criado.
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(
             ({ coords: { latitude, longitude } }) => getLocation(latitude, longitude),
@@ -55,7 +53,7 @@ export function NavBar() {
                     </div>
                 </NavItens_Andress>
                 <NavItens_Cart><a href="/"><img src={home} alt="" /></a></NavItens_Cart>
-                <NavItens_Cart><a href="/coffeeDelivery/CheckOut">
+                <NavItens_Cart><a href="/CheckOut">
                     <TotalQuantityDiv>{totalQuantity}</TotalQuantityDiv>
                     <img src={cartNav} alt="" /></a>
                 </NavItens_Cart>

@@ -148,7 +148,7 @@ export function CheckOut() {
             localStorage.setItem('formData', JSON.stringify(Object.fromEntries(formData)));
             removeAllItensCart()
 
-            window.location.href = '/coffeeDelivery/Delivery';
+            window.location.href = '/Delivery';
             setMsg('')
         } else {
             setMsg('Preencha e escolha todos os campos corretamente')
