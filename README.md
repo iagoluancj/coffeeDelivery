@@ -1,5 +1,7 @@
 # React + TypeScript + Vite
 
+<h2 align="center"><a href="https://iagoluancj.github.io/coffeeDelivery/">Abrir a aplicação</a></h2>
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
