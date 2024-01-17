@@ -6,11 +6,11 @@
 
 ![coffee](https://github.com/iagoluancj/coffeeDelivery/assets/86308522/cfbdc7f6-af05-4bb2-8d2c-fa4c779b6afe)
 
-*Mais informações:*
+## Mais informações:
 <br>
-Projeto desenvolvido com base na ideia apresentada no curso Ignite da Rocketseat.
+### Projeto desenvolvido com base na ideia apresentada no curso Ignite da Rocketseat.
 
-A proposta inicial era apenas transpor o layout do Figma para a web, mas eu mesmo estabeleci como um desafio ir além e implementar todas as funcionalidades possíveis. Nesse sentido, consegui incorporar diversas melhorias ao projeto, algumas das quais incluem:
+#### A proposta inicial era apenas transpor o layout do Figma para a web, mas eu mesmo estabeleci como um desafio ir além e implementar todas as funcionalidades possíveis. Nesse sentido, consegui incorporar diversas melhorias ao projeto, algumas das quais incluem:
 - Verificação do formulário de compra;
 - Validação do endereço;
 - Validação do CEP;
