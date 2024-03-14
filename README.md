@@ -1,4 +1,4 @@
-# Coffee Delivery em React com TypeScript
+# Coffee Delivery em React com TypeScript.
 
 <h2 align="center"><a href="https://iagoluancj.github.io/coffeeDelivery/">Abrir a aplicação</a></h2>
 
@@ -18,4 +18,4 @@
 - Identificação do local atual do cliente;
 - Botão para retornar à página inicial;
 - Opção para excluir a quantidade total de cafés quando mais de um está selecionado;
-- Carrinho dinâmico.
+- Carrinho dinâmico;
